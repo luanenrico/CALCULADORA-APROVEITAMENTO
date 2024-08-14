@@ -1,6 +1,6 @@
 type Tmaterial = {
     material: string,
-    valor: number
+    valorKG: number
 }
 
 type Tvendedor = {
@@ -8,32 +8,39 @@ type Tvendedor = {
     produto: Tmaterial[] 
 }
 
-let pesomaterial: number =  50.00
+const pesomaterial: number = 5
 
-const material: Tvendedor = { 
+const materiais: Tvendedor = { 
     nome: 'wilton',
     produto: [
         {
             material: 'aluminio',
-            valor: 10.00
+            valorKG: 10.00
         },
         {
             material: 'ferro',
-            valor: 8.00
+            valorKG: 8.00
         },
         {
             material: 'metalon',
-            valor: 20.00
+            valorKG: 20.00
         }
 
     ]
 }
 
+let cobrar = 0
 
-    if (material.produto === 'alumunio'){
-        console.log(pesomaterial * 10.00) 
-    } else if (material.produto === 'ferro') {
-        console.log(pesomaterial * 8.00) 
-    } else {
-        console.log(pesomaterial * 20.00) 
-    }
+function escolhaProduto(material: string, pesomaterial: number) {
+    
+    const materialSelecionado = materiais.produto.find(item => item.material === material)
+
+if (!materialSelecionado) {
+    return 'material não selecionado'
+}
+cobrar = materialSelecionado.valorKG * pesomaterial
+
+}
+escolhaProduto("metalon", pesomaterial)
+
+console.log(cobrar)
